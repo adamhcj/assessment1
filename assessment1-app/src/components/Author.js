@@ -1,8 +1,11 @@
-import { FormControl, Button, FormLabel, TextField } from '@mui/material';
+import { FormControl, Button, FormLabel, TextField, IconButton } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch , useSelector } from 'react-redux';
 import { setAuthor, setAuthors } from '../reduxSlice/authorSlice';
 import swal from 'sweetalert';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import SaveIcon from '@mui/icons-material/Save';
 
 
 function Author(author) {
@@ -12,14 +15,14 @@ function Author(author) {
     const authors = useSelector(state => state.author.authors)
 
     return (
-        <div>
+        <div className='authorDiv'>
             {edit 
             ? 
             <TextField size='small' value={newAuthor} onChange={(e) => setNewAuthor(e.target.value)} /> 
             : 
-            <span>{author.author}</span>
+            <span className='authorSpan'>{author.author}</span>
             }
-            <Button onClick={
+            <IconButton onClick={
                 () => {
                     if (edit) {
                         // save the new author name
@@ -31,10 +34,11 @@ function Author(author) {
                     setEdit(!edit);
                 }
             }>
-                {edit ? 'Save' : 'Edit'}
-            </Button>
+                {edit ? <SaveIcon /> : <EditIcon />}
+            </IconButton>
             
-            <Button onClick={
+            <IconButton 
+            onClick={
                 () => {
                     swal({
                         title: 'Are you sure?',
@@ -56,8 +60,8 @@ function Author(author) {
                     })
                 }
             }>
-                Delete
-            </Button>
+                <DeleteIcon />
+            </IconButton>
         </div>
     );
 }

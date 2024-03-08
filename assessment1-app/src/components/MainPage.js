@@ -20,7 +20,7 @@ function MainPage() {
     }
 
   return (
-    <div>
+    <div id="mainPage">
       <AuthorForm 
         submitAuthor={(e) => {
             e.preventDefault();
@@ -54,7 +54,8 @@ function MainPage() {
             
         }}
       />
-
+        {/* Authors will be shown here */}
+        {authors.length === 0 && <h3>No authors added yet</h3>}
         {authors.map( (author, index) => {
             return <Author author={author} index={index} />
         })}
