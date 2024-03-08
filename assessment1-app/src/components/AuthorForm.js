@@ -1,5 +1,5 @@
 import { FormControl, Button, FormLabel, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { setAuthor } from '../reduxSlice/authorSlice';
 import swal from 'sweetalert';
@@ -7,6 +7,9 @@ import swal from 'sweetalert';
 function AuthorForm({ submitAuthor }) {
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(setAuthor(''));
+    }, [])
 
     return (
         <form onSubmit={submitAuthor}>

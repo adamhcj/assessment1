@@ -3,10 +3,21 @@ import { useState } from "react";
 import Author from "./Author";
 import { useSelector } from 'react-redux'
 import swal from 'sweetalert';
+import { useDispatch } from 'react-redux'
+import { setAuthors } from '../reduxSlice/authorSlice';
 
 function MainPage() {
-    const [authors, setAuthors] = useState([]);
+    const authors = useSelector(state => state.author.authors)
     const author = useSelector(state => state.author.author)
+    const dispatch = useDispatch();
+
+    const showAddSuccess = () => {
+        swal(
+            'Success',
+            'Author added successfully',
+            'success'
+        );
+    }
 
   return (
     <div>
@@ -31,19 +42,21 @@ function MainPage() {
                     dangerMode: true,
                 }).then(willAdd => {
                     if (willAdd) {
-                        setAuthors([...authors, author]);
+                        dispatch(setAuthors([...authors, author]));
+                        showAddSuccess();
                     }
                 })
                 return;
             };
-            setAuthors([...authors, author]);
+            dispatch(setAuthors([...authors, author]));
+            showAddSuccess();
 
             
         }}
       />
 
-        {authors.map( author => {
-            return <Author author={author} />
+        {authors.map( (author, index) => {
+            return <Author author={author} index={index} />
         })}
 
 
