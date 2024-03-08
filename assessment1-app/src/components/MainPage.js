@@ -68,8 +68,8 @@ function MainPage() {
         }}
       />
         {/* Authors will be shown here */}
-        {authors.length === 0 && <Typography variant="h4">No authors added yet</Typography>}
-        {authors.length > 0 && <Typography variant="h4">Authors added:</Typography>}
+        {authors.length === 0 && <Typography variant="h4" color="GrayText">No authors added yet</Typography>}
+        {authors.length > 0 && <Typography variant="h4" color="green">Authors added:</Typography>}
         {authors.map( (author, index) => {
             return <Author author={author} index={index} />
         })}
