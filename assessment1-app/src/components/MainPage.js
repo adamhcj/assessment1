@@ -5,6 +5,16 @@ import { useSelector } from 'react-redux'
 import swal from 'sweetalert';
 import { useDispatch } from 'react-redux'
 import { setAuthors } from '../reduxSlice/authorSlice';
+import Users from "./Users";
+import {
+    createTheme,
+    responsiveFontSizes,
+    ThemeProvider,
+  } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+  
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 function MainPage() {
     const authors = useSelector(state => state.author.authors)
@@ -21,6 +31,9 @@ function MainPage() {
 
   return (
     <div id="mainPage">
+        <ThemeProvider theme={theme}>
+        <Typography variant="h5">Assessment 1</Typography>
+        <br />
       <AuthorForm 
         submitAuthor={(e) => {
             e.preventDefault();
@@ -55,14 +68,17 @@ function MainPage() {
         }}
       />
         {/* Authors will be shown here */}
-        {authors.length === 0 && <h3>No authors added yet</h3>}
+        {authors.length === 0 && <Typography variant="h4">No authors added yet</Typography>}
+        {authors.length > 0 && <Typography variant="h4">Authors added:</Typography>}
         {authors.map( (author, index) => {
             return <Author author={author} index={index} />
         })}
 
+        <Users />
 
 
-    
+
+        </ThemeProvider>
     </div>
   );
 }

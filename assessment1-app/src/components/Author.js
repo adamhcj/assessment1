@@ -6,6 +6,15 @@ import swal from 'sweetalert';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
+import {
+    createTheme,
+    responsiveFontSizes,
+    ThemeProvider,
+  } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+  
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 
 function Author(author) {
@@ -20,7 +29,7 @@ function Author(author) {
             ? 
             <TextField size='small' value={newAuthor} onChange={(e) => setNewAuthor(e.target.value)} /> 
             : 
-            <span className='authorSpan'>{author.author}</span>
+            <Typography marginRight='10px' variant='h5' className='authorSpan'>{author.author}</Typography>
             }
             <IconButton onClick={
                 () => {

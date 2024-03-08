@@ -1,15 +1,17 @@
 #mainPage {
   padding: 20px;
+  padding-top: 10px;
 }
 
 #submitAuthorButton {
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .authorSpan {
-  font-size:x-large;
-  vertical-align:middle;
-  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
 }
 
 .authorDiv {
