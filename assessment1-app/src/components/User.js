@@ -52,6 +52,7 @@ function User(passedUser) {
                 <Typography color="darkturquoise" variant="h5">
                     id: {user.id}
                     <Button
+                    sx={{zIndex: '1000'}}
                     onClick={() => setHide(!hide)}
                     >
                         {hide ? 'Show' : 'Hide'}
@@ -59,7 +60,7 @@ function User(passedUser) {
                 </Typography>
                 
                 
-                    <div className='userHideSection' style={{display:'flex', flexDirection : 'row', justifyContent:'space-evenly', opacity: hide? '0' : '1', maxHeight: hide ? '0px' : '400px' , transition:'max-height 0.25s ease-in, opacity 0.25s ease-in'}}>
+                    <div className='userHideSection' style={{display:'flex', flexDirection : 'row', justifyContent:'space-evenly', opacity: hide? '0' : '1', maxHeight: hide ? '0px' : '300px' , transition:'max-height 0.25s ease-in, opacity 0.25s ease-in'}}>
                         <div className='userCardSubSection'>
                             <Typography sx={{textDecoration: 'underline'}} variant="h5" component="div">
                                 Details

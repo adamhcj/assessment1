@@ -6,6 +6,7 @@ import {
     ThemeProvider,
   } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import GroupIcon from '@mui/icons-material/Group';
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
@@ -27,7 +28,8 @@ function Users() {
     <div>
         <br />
         <ThemeProvider theme={theme}>
-            <Typography color="blue" variant="h4" component="div">
+            <Typography color="blue" variant="h5" component="div">
+                <GroupIcon fontSize='inherit' sx={{verticalAlign:'middle', marginRight:'0.3vw'}} />
                 Users
             </Typography>
         </ThemeProvider>
