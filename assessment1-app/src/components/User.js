@@ -10,6 +10,9 @@ import { Card } from '@mui/material';
 import Box from '@mui/material/Box';
 import LeafletMap from './LeafletMap';
 import { useState } from 'react';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import BusinessIcon from '@mui/icons-material/Business';
+import PlaceIcon from '@mui/icons-material/Place';
 
 
   
@@ -63,6 +66,7 @@ function User(passedUser) {
                     <div className='userHideSection' style={{display:'flex', flexDirection : 'row', justifyContent:'space-evenly', opacity: hide? '0' : '1', maxHeight: hide ? '0px' : '300px' , transition:'max-height 0.25s ease-in, opacity 0.25s ease-in'}}>
                         <div className='userCardSubSection'>
                             <Typography sx={{textDecoration: 'underline'}} variant="h5" component="div">
+                                <PermIdentityIcon fontSize='inherit' sx={{verticalAlign:'middle', marginRight:'0.3vw'}} />
                                 Details
                             </Typography>
                             
@@ -87,6 +91,7 @@ function User(passedUser) {
 
                         <div className='userCardSubSection'>
                             <Typography sx={{textDecoration: 'underline'}} variant="h5" component="div">
+                                <BusinessIcon fontSize='inherit' sx={{verticalAlign:'middle', marginRight:'0.3vw'}} />
                                 Company
                             </Typography>
                             <div className='userCardSubSection2'>
@@ -105,6 +110,7 @@ function User(passedUser) {
 
                         <div className='userCardSubSection'>
                             <Typography sx={{textDecoration: 'underline'}} variant="h5" component="div">
+                                <PlaceIcon fontSize='inherit' sx={{verticalAlign:'middle', marginRight:'0.2vw'}} />
                                 Address
                             </Typography>
                             <div className='userCardSubSection2'>
