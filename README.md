@@ -28,6 +28,4 @@ npm install
 npm start
 ```
 
-## 🚀 Deployment on Cloud
-Please refer to assessment2 for more details where it is highlighted
 
