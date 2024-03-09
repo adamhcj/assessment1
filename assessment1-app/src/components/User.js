@@ -1,4 +1,4 @@
-import { CardContent } from '@mui/material';
+import { Button, CardContent } from '@mui/material';
 import {
     createTheme,
     responsiveFontSizes,
@@ -9,6 +9,7 @@ import React from 'react';
 import { Card } from '@mui/material';
 import Box from '@mui/material/Box';
 import LeafletMap from './LeafletMap';
+import { useState } from 'react';
 
 
   
@@ -18,6 +19,8 @@ theme = responsiveFontSizes(theme);
 function User(passedUser) {
 
     const user = passedUser.passedUser;
+
+    const [hide, setHide] = useState(false);
 
     let sampleUser = {
         "id": 1,
@@ -45,82 +48,90 @@ function User(passedUser) {
 
     const card = (
         <React.Fragment>
-            <CardContent>
-                <Typography variant="h5" component="div">
+            <CardContent sx={{paddingTop:'2px', paddingLeft: '5px' , '&:last-child': { pb : hide ? '0px' : '24px', }}}>
+                <Typography color="darkturquoise" variant="h5">
                     id: {user.id}
+                    <Button
+                    onClick={() => setHide(!hide)}
+                    >
+                        {hide ? 'Show' : 'Hide'}
+                    </Button>
                 </Typography>
-                <div style={{display:'flex', flexDirection : 'row', justifyContent:'space-evenly'}}>
-                    <div className='userCardSubSection'>
-                        <Typography variant="h5" component="div">
-                            Details
-                        </Typography>
-                        
-                        <div className='userCardSubSection2'>
-                            <Typography variant="body2">
-                                name: {user.name}
+                
+                
+                    <div className='userHideSection' style={{display:'flex', flexDirection : 'row', justifyContent:'space-evenly', opacity: hide? '0' : '1', maxHeight: hide ? '0px' : '400px' , transition:'max-height 0.25s ease-in, opacity 0.25s ease-in'}}>
+                        <div className='userCardSubSection'>
+                            <Typography sx={{textDecoration: 'underline'}} variant="h5" component="div">
+                                Details
                             </Typography>
-                            <Typography variant="body2">
-                                username: {user.username}
-                            </Typography>
-                            <Typography variant="body2">
-                                email: {user.email}
-                            </Typography>
-                            <Typography variant="body2">
-                                phone: {user.phone}
-                            </Typography>
-                            <Typography variant="body2">
-                                website: {user.website}
-                            </Typography>
-                        </div>
-                    </div>
-
-                    <div className='userCardSubSection'>
-                        <Typography variant="h5" component="div">
-                            company
-                        </Typography>
-                        <div className='userCardSubSection2'>
-                            <Typography variant="body2">
-                                name: {user.company.name}
-                            </Typography>
-                            <Typography variant="body2">
-                                catchPhrase: {user.company.catchPhrase}
-                            </Typography>
-                            <Typography variant="body2">
-                                bs: {user.company.bs}
-                            </Typography>
+                            
+                            <div className='userCardSubSection2'>
+                                <Typography variant="body2">
+                                    name: {user.name}
+                                </Typography>
+                                <Typography variant="body2">
+                                    username: {user.username}
+                                </Typography>
+                                <Typography variant="body2">
+                                    email: {user.email}
+                                </Typography>
+                                <Typography variant="body2">
+                                    phone: {user.phone}
+                                </Typography>
+                                <Typography variant="body2">
+                                    website: {user.website}
+                                </Typography>
+                            </div>
                         </div>
 
-                    </div>
+                        <div className='userCardSubSection'>
+                            <Typography sx={{textDecoration: 'underline'}} variant="h5" component="div">
+                                Company
+                            </Typography>
+                            <div className='userCardSubSection2'>
+                                <Typography variant="body2">
+                                    name: {user.company.name}
+                                </Typography>
+                                <Typography variant="body2">
+                                    catchPhrase: {user.company.catchPhrase}
+                                </Typography>
+                                <Typography variant="body2">
+                                    bs: {user.company.bs}
+                                </Typography>
+                            </div>
 
-                    <div className='userCardSubSection'>
-                        <Typography variant="h5" component="div">
-                            address
-                        </Typography>
-                        <div className='userCardSubSection2'>
-                            <Typography variant="body2">
-                                street: {user.address.street}
+                        </div>
+
+                        <div className='userCardSubSection'>
+                            <Typography sx={{textDecoration: 'underline'}} variant="h5" component="div">
+                                Address
                             </Typography>
-                            <Typography variant="body2">
-                                suite: {user.address.suite}
-                            </Typography>
-                            <Typography variant="body2">
-                                city: {user.address.city}
-                            </Typography>
-                            <Typography variant="body2">
-                                zipcode: {user.address.zipcode}
-                            </Typography>
-                            <Typography variant="body2">
-                                geo: <br />
-                                lat:{user.address.geo.lat} <br />
-                                lng:{user.address.geo.lng}
-                            </Typography>
+                            <div className='userCardSubSection2'>
+                                <Typography variant="body2">
+                                    street: {user.address.street}
+                                </Typography>
+                                <Typography variant="body2">
+                                    suite: {user.address.suite}
+                                </Typography>
+                                <Typography variant="body2">
+                                    city: {user.address.city}
+                                </Typography>
+                                <Typography variant="body2">
+                                    zipcode: {user.address.zipcode}
+                                </Typography>
+                                <Typography variant="body2">
+                                    geo: <br />
+                                    lat:{user.address.geo.lat} <br />
+                                    lng:{user.address.geo.lng}
+                                </Typography>
+                            </div>
+                        </div>
+
+                        <div className='userCardSubSection'>
+                            <LeafletMap passedlatlng={user.address.geo} />
                         </div>
                     </div>
-
-                    <div className='userCardSubSection'>
-                        <LeafletMap passedlatlng={user.address.geo} />
-                    </div>
-                </div>
+                
                 
             </CardContent>
         </React.Fragment>

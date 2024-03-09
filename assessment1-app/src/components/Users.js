@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import User from './User';
+import {
+    createTheme,
+    responsiveFontSizes,
+    ThemeProvider,
+  } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
+
 
 function Users() {
 
@@ -15,7 +25,12 @@ function Users() {
 
     return (
     <div>
-        <h2>Users</h2>
+        <br />
+        <ThemeProvider theme={theme}>
+            <Typography color="blue" variant="h4" component="div">
+                Users
+            </Typography>
+        </ThemeProvider>
         {users.map(user => (
             <User passedUser={user} />
         ))}
