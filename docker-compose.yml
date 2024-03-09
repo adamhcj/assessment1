@@ -1,0 +1,10 @@
+# Use root/example as user/password credentials
+version: '1.0'
+
+services:
+  # frontend
+  frontend:
+    build: ./assessment1-app
+    ports:
+      - 3000:3000
+    restart: always
